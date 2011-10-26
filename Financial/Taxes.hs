@@ -3,31 +3,19 @@ module Financial.Taxes (deductLosses, deductLosses', scanDeductLosses) where
     import Financial.Types (Currency, pln)
     import Data.List (minimum)
     
-    -- incomeTax :: [Currency] -> [Currency] -> (Currency, [Currency])
-    -- incomeTax profit
-    -- incomeTax profit:profits profit':profits'
-    --  | profit <= 0 = (profit, profits')
-    --  | otherwise = deductLosses profit profits profits'
-    -- 
-    -- deductLosses :: Currency -> [Currency] -> [Currency] -> (Currency, [Currency])
-    -- deductLosses maxDeductionPeriods profit prevProfits prevProfits' =
-    --  foldl step [] profit $ take maxDeducionPeriods $ zip prevProfits prevProfits'
-    --  where
-    --      step 
-
     -- Profits -> profits and losses after loss deduction.
     deductLosses :: Int -> [Currency] -> [Currency]
-    deductLosses nPeriodsToLookBack = doDeductLosses nPeriodsToLookBack useOrigLossAndAccValue
+    deductLosses nPeriodsToLookBack = doDeductLosses nPeriodsToLookBack useOriginalLossAndAccumulatedProfit
         where
-	        useOrigLossAndAccValue (orig, acc)  
+	        useOriginalLossAndAccumulatedProfit (orig, acc)  
 	            | orig > 0 = acc    -- Profit: use calculation result.
 	            | otherwise = orig  -- Loss: ignore calculation results, use original value.
             
     -- Profits -> profits with deducted losses and, in case of losses, the remaining amounts that couldn't be deducted.
     deductLosses' :: Int -> [Currency] -> [Currency]
-    deductLosses' nPeriodsToLookBack = doDeductLosses nPeriodsToLookBack useAccValue
+    deductLosses' nPeriodsToLookBack = doDeductLosses nPeriodsToLookBack useAccumulatedValue
 		where
-			useAccValue (orig, acc) = acc
+			useAccumulatedValue (orig, acc) = acc
             
     doDeductLosses :: Int -> ((Currency, Currency) -> Currency) -> [Currency] -> [Currency]
     doDeductLosses nPeriodsToLookBack unpackResult = map unpackResult . reverse . foldr (deductLossesForPeriod nPeriodsToLookBack) [] . reverse . (\xs -> zip xs xs)

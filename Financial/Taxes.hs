@@ -1,4 +1,4 @@
-module Financial.Taxes where
+module Financial.Taxes (deductLosses, deductLosses', scanDeductLosses) where
     
     import Financial.Types (Currency, pln)
     import Data.List (minimum)
@@ -17,22 +17,20 @@ module Financial.Taxes where
 
     -- Profits -> profits and losses after loss deduction.
     deductLosses :: Int -> [Currency] -> [Currency]
-    deductLosses nPeriodsToLookBack = integrate . (doDeduct nPeriodsToLookBack) . (\xs -> zip xs xs)
+    deductLosses nPeriodsToLookBack = (map preserveOrigLoss) . (doDeductLosses nPeriodsToLookBack) . (\xs -> zip xs xs)
         where
-            integrate :: [(Currency, Currency)] -> [Currency]
-            integrate xs = map select xs
-             where
-                select (orig, acc)  
-                    | orig > 0 = acc    -- Profit: use calculation result.
-                    | otherwise = orig  -- Loss: ignore calculation results, use original value.
+	        preserveOrigLoss (orig, acc)  
+	            | orig > 0 = acc    -- Profit: use calculation result.
+	            | otherwise = orig  -- Loss: ignore calculation results, use original value.
             
-    -- Profits -> profits interleaved with amounts of losses that couldn't be deducted.
+    -- Profits -> profits with deducted losses and, in case of losses, the remaining amounts that couldn't be deducted.
     deductLosses' :: Int -> [Currency] -> [Currency]
-    deductLosses' nPeriodsToLookBack = snd . unzip . (doDeduct nPeriodsToLookBack) . (\xs -> zip xs xs)
+    deductLosses' nPeriodsToLookBack = snd . unzip . (doDeductLosses nPeriodsToLookBack) . (\xs -> zip xs xs)
             
-    doDeduct :: Int -> [(Currency, Currency)] -> [(Currency, Currency)]
-    doDeduct nPeriodsToLookBack = reverse . foldr (deductLossesForPeriod nPeriodsToLookBack) [] . reverse
+    doDeductLosses :: Int -> [(Currency, Currency)] -> [(Currency, Currency)]
+    doDeductLosses nPeriodsToLookBack = reverse . foldr (deductLossesForPeriod nPeriodsToLookBack) [] . reverse
 
+	-- The main working engine for loss deduction.
     deductLossesForPeriod :: Int -> (Currency, Currency) -> [(Currency, Currency)] -> [(Currency, Currency)]
     deductLossesForPeriod nPeriodsToLookBack crnt past = (foldr step [crnt] deductiblePast) ++ nonDeductiblePast
         where
@@ -42,7 +40,7 @@ module Financial.Taxes where
                 where
                     dl = deductibleLoss acc' acc orig
 
-    -- Same as deductLosses' but returns full history of loss deductions
+    -- Same as deductLosses' but returns full track of loss deductions
     scanDeductLosses nPeriodsToLookBack past = reverse $ scanr (deductLossesForPeriod nPeriodsToLookBack) [] $ reverse $ zip past past
 
     -- IMPORTANT: Deduction policy (2).

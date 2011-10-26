@@ -17,18 +17,20 @@ module Financial.Taxes (deductLosses, deductLosses', scanDeductLosses) where
 
     -- Profits -> profits and losses after loss deduction.
     deductLosses :: Int -> [Currency] -> [Currency]
-    deductLosses nPeriodsToLookBack = (map preserveOrigLoss) . (doDeductLosses nPeriodsToLookBack) . (\xs -> zip xs xs)
+    deductLosses nPeriodsToLookBack = doDeductLosses nPeriodsToLookBack useOrigLossAndAccValue
         where
-	        preserveOrigLoss (orig, acc)  
+	        useOrigLossAndAccValue (orig, acc)  
 	            | orig > 0 = acc    -- Profit: use calculation result.
 	            | otherwise = orig  -- Loss: ignore calculation results, use original value.
             
     -- Profits -> profits with deducted losses and, in case of losses, the remaining amounts that couldn't be deducted.
     deductLosses' :: Int -> [Currency] -> [Currency]
-    deductLosses' nPeriodsToLookBack = snd . unzip . (doDeductLosses nPeriodsToLookBack) . (\xs -> zip xs xs)
+    deductLosses' nPeriodsToLookBack = doDeductLosses nPeriodsToLookBack useAccValue
+		where
+			useAccValue (orig, acc) = acc
             
-    doDeductLosses :: Int -> [(Currency, Currency)] -> [(Currency, Currency)]
-    doDeductLosses nPeriodsToLookBack = reverse . foldr (deductLossesForPeriod nPeriodsToLookBack) [] . reverse
+    doDeductLosses :: Int -> ((Currency, Currency) -> Currency) -> [Currency] -> [Currency]
+    doDeductLosses nPeriodsToLookBack unpackResult = map unpackResult . reverse . foldr (deductLossesForPeriod nPeriodsToLookBack) [] . reverse . (\xs -> zip xs xs)
 
 	-- The main working engine for loss deduction.
     deductLossesForPeriod :: Int -> (Currency, Currency) -> [(Currency, Currency)] -> [(Currency, Currency)]

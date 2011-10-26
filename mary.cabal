@@ -7,6 +7,6 @@ Author:              Marcin Bilski
 Maintainer:          gyamtso@gmail.com
 Build-Type:          Simple
 Cabal-Version:       >=1.2
-Executable haq
-Main-is:           src/App/Main.hs
-Build-Depends:     base >= 3 && < 5
+Executable mary
+    Main-is:           src/App/Main.hs
+    Build-Depends:     base >= 3 && < 5

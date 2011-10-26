@@ -1,4 +1,4 @@
-import MonteCarlo (monteCarlo)
+import Data.Random.MonteCarlo (monteCarlo)
 import System.Environment
 
 main :: IO ()

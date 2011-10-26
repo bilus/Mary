@@ -8,5 +8,6 @@ Maintainer:          gyamtso@gmail.com
 Build-Type:          Simple
 Cabal-Version:       >=1.2
 Executable mary
-    Main-is:           src/App/Main.hs
-    Build-Depends:     base >= 3 && < 5
+    Main-is:           Mary.hs
+    Build-Depends:     base >= 3 && < 5, normaldistribution >= 1.1, erf >= 2, random >= 1
+    ghc-options:       -Wall

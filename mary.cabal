@@ -1,0 +1,12 @@
+Name:                mary
+Version:             0.1
+Description:         Profitability estimator
+License:             GPL
+License-file:        LICENSE
+Author:              Marcin Bilski
+Maintainer:          gyamtso@gmail.com
+Build-Type:          Simple
+Cabal-Version:       >=1.2
+Executable haq
+Main-is:           src/App/Main.hs
+Build-Depends:     base >= 3 && < 5

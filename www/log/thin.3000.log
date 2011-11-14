@@ -1,0 +1,37 @@
+>> Writing PID to tmp/pids/thin.3000.pid
+>> Thin web server (v1.3.1 codename Triple Espresso)
+>> Maximum connections set to 1024
+>> Listening on 0.0.0.0:3000, CTRL+C to stop
+127.0.0.1 - - [14/Nov/2011 19:16:58] "GET  HTTP/1.1" 200 - 0.0405
+127.0.0.1 - - [14/Nov/2011 19:16:58] "GET /favicon.ico HTTP/1.1" 404 30 0.0102
+>> Exiting!
+>> Writing PID to tmp/pids/thin.3000.pid
+>> Using rack adapter
+>> Thin web server (v1.3.1 codename Triple Espresso)
+>> Maximum connections set to 1024
+>> Listening on 0.0.0.0:3000, CTRL+C to stop
+>> Exiting!
+>> Writing PID to tmp/pids/thin.3000.pid
+>> Using rack adapter
+>> Thin web server (v1.3.1 codename Triple Espresso)
+>> Maximum connections set to 1024
+>> Listening on 0.0.0.0:3000, CTRL+C to stop
+127.0.0.1 - - [14/Nov/2011 19:58:16] "GET  HTTP/1.1" 200 - 0.0345
+127.0.0.1 - - [14/Nov/2011 19:58:16] "GET /favicon.ico HTTP/1.1" 404 30 0.0425
+127.0.0.1 - - [14/Nov/2011 19:58:19] "GET /favicon.ico HTTP/1.1" 404 30 0.0068
+>> Exiting!
+>> Writing PID to tmp/pids/thin.3000.pid
+>> Thin web server (v1.3.1 codename Triple Espresso)
+>> Maximum connections set to 1024
+>> Listening on 0.0.0.0:3000, CTRL+C to stop
+>> Stopping ...
+>> Exiting!
+>> Writing PID to tmp/pids/thin.3000.pid
+>> Using rack adapter
+>> Thin web server (v1.3.1 codename Triple Espresso)
+>> Maximum connections set to 1024
+>> Listening on 0.0.0.0:3000, CTRL+C to stop
+127.0.0.1 - - [14/Nov/2011 20:12:23] "GET  HTTP/1.1" 200 - 0.0466
+127.0.0.1 - - [14/Nov/2011 20:12:23] "GET /favicon.ico HTTP/1.1" 404 30 0.0237
+127.0.0.1 - - [14/Nov/2011 20:12:24] "GET /favicon.ico HTTP/1.1" 404 30 0.0084
+>> Exiting!

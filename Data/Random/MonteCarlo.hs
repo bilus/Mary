@@ -1,4 +1,4 @@
-module Data.Random.MonteCarlo (monteCarlo, exportToCsv, Param, mkNormDistParam) where
+module Data.Random.MonteCarlo (monteCarlo, exportToCsv, Param, mkCLRangeParam, mkSDRangeParam) where
 	
 	import System.Random (RandomGen, mkStdGen)
 	import Data.Random.Normal (normals')
@@ -12,36 +12,50 @@ module Data.Random.MonteCarlo (monteCarlo, exportToCsv, Param, mkNormDistParam) 
 	type Probability = Float
 
 	-- Simulation parameter.
+	-- (CL|SD)(Range|Point)
+	-- CL - parameter based on confidence level.
+	-- SD - parameter based on standard deviation.
+	-- Range - range of values [min, max].
+	-- Point - single value (mean).
 	data Param = 
-		NormDistParam {valueRange :: (Value, Value), confLevel :: Probability} |	-- Normal distribution.
-		NormDistParam2 {value :: Value, stdDev :: Float}
+		-- Normal distribution:
+		CLRangeParam {valueRange :: (Value, Value), confLevel :: Probability} |	
+		SDRangeParam {valueRange :: (Value, Value), stdDev :: Float} |	
+		SDPointParam {value :: Value, stdDev :: Float}
 		-- TODO: Other distributions from the book.
 		deriving (Show)
 
-	-- Create a simulation parameter based on normal distribution.
-	-- For instance, mkNormDistParam (10, 20) 0.9 means that you estimate with 90% confidence that the population mean is between 10 and 20.
-	mkNormDistParam :: (Value, Value) -> Probability -> Param
-	mkNormDistParam vr@(minValue, maxValue) confidenceLevel
+	-- Create a simulation parameter based on normal distribution and provided confidence level.
+	-- For instance, mkCLRangeParam (10, 20) 0.9 means that you estimate with 90% confidence that the population mean is between 10 and 20.
+	mkCLRangeParam :: (Value, Value) -> Probability -> Param
+	mkCLRangeParam vr@(minValue, maxValue) confidenceLevel
 		| minValue > maxValue = error "Maximum value must be greater or equal to minimum value"
 		| confidenceLevel <= 0 || confidenceLevel > 1 = error "Confidence level must be (0, 1]"
-		| otherwise = NormDistParam {valueRange = vr, confLevel = confidenceLevel}
+		| otherwise = CLRangeParam {valueRange = vr, confLevel = confidenceLevel}
 
-	mkNormDistParam2 :: Value -> Float -> Param
-	mkNormDistParam2 v sd = NormDistParam2 {value = v, stdDev = sd}
+	mkSDRangeParam :: (Value, Value) -> Float -> Param
+	mkSDRangeParam vr@(minValue, maxValue) sd
+		| minValue > maxValue = error "Maximum value must be greater or equal to minimum value"
+		| otherwise = SDRangeParam {valueRange = vr, stdDev = sd}
+
+	mkSDPointParam :: Value -> Float -> Param
+	mkSDPointParam v sd = SDPointParam {value = v, stdDev = sd}
 
 	-- Infinite list of normally distributed sample values based on the simulation parameter and the provided random number generator.
 	samplesFor :: (RandomGen g) => Param -> g -> [Value]
-	samplesFor p@(NormDistParam {valueRange = _, confLevel = _}) gen = normals' (mean, stdDev) gen
+	samplesFor p@(CLRangeParam {valueRange = _, confLevel = _}) gen = normals' (vrMean $ valueRange p, stdDev) gen
 		where 
-			mean = (minP + maxP) / 2
-				where
-					minP = fst (valueRange p)
-					maxP = snd (valueRange p)
 			stdDev = estimatedStdDev (valueRange p) (confLevel p)
-	samplesFor p@(NormDistParam2 {value = _, stdDev = _}) gen = normals' (mean, sd) gen
+
+	samplesFor p@(SDRangeParam {valueRange = _, stdDev = _}) gen = normals' (vrMean $ valueRange p, stdDev p) gen
+
+	samplesFor p@(SDPointParam {value = _, stdDev = _}) gen = normals' (mean, sd) gen
 		where
 				mean = value p
 				sd = stdDev p
+	
+	vrMean :: (Value, Value) -> Value
+	vrMean (minVal, maxVal) = (minVal + maxVal) / 2
 
 	-- Infinite list of normally distributed sample values based on the simulation parameter and the random generator seed.
 	mkSamplesFor :: Param -> Int -> [Value]
@@ -86,8 +100,8 @@ module Data.Random.MonteCarlo (monteCarlo, exportToCsv, Param, mkNormDistParam) 
 					join x acc = (show x) ++ sep ++ acc
 	
 	---------------------------------------------------------------------------
-	test = monteCarlo [mkNormDistParam (10, 20) 0.9, mkNormDistParam (0.9 * 2400, 1.1 * 2400) 0.9] [sums, mult] $ mkStdGen 1234
+	test = monteCarlo [mkCLRangeParam (10, 20) 0.9, mkCLRangeParam (0.9 * 2400, 1.1 * 2400) 0.9] [sums, mult] $ mkStdGen 1234
 		where
 			sums xs = [foldr (+) 0 xs, foldr (+) 100 xs]
 			mult xs = [foldr (*) 1 xs]
-	test2 = monteCarlo [mkNormDistParam2 49.197 (0.1251 * 49.197)] [] $ mkStdGen 1234
+	test2 = monteCarlo [mkSDPointParam 49.197 (0.1251 * 49.197)] [] $ mkStdGen 1234

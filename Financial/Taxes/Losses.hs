@@ -1,8 +1,11 @@
-module Financial.Taxes (deductLosses, deductLosses', scanDeductLosses) where
+module Financial.Taxes.Losses (deductLosses) where
     
     import Financial.Types (Currency, pln)
     import Data.List (minimum)
     
+	-------------------
+	---- Interface ----
+
     -- Profits -> profits and losses after loss deduction.
     deductLosses :: Int -> [Currency] -> [Currency]
     deductLosses nPeriodsToLookBack = doDeductLosses nPeriodsToLookBack useOriginalLossAndAccumulatedProfit
@@ -12,15 +15,18 @@ module Financial.Taxes (deductLosses, deductLosses', scanDeductLosses) where
 	            | otherwise = orig  -- Loss: ignore calculation results, use original value.
             
     -- Profits -> profits with deducted losses and, in case of losses, the remaining amounts that couldn't be deducted.
+	-- Useful if you want to determine the amounts of losses deducted for each period or the remaining, non-deductible amounts.
     deductLosses' :: Int -> [Currency] -> [Currency]
     deductLosses' nPeriodsToLookBack = doDeductLosses nPeriodsToLookBack useAccumulatedValue
 		where
 			useAccumulatedValue (orig, acc) = acc
-            
+        
+    ------------------------
+	---- Implementation ----
+
     doDeductLosses :: Int -> ((Currency, Currency) -> Currency) -> [Currency] -> [Currency]
     doDeductLosses nPeriodsToLookBack unpackResult = map unpackResult . reverse . foldr (deductLossesForPeriod nPeriodsToLookBack) [] . reverse . (\xs -> zip xs xs)
 
-	-- The main working engine for loss deduction.
     deductLossesForPeriod :: Int -> (Currency, Currency) -> [(Currency, Currency)] -> [(Currency, Currency)]
     deductLossesForPeriod nPeriodsToLookBack crnt past = (foldr step [crnt] deductiblePast) ++ nonDeductiblePast
         where
@@ -30,14 +36,15 @@ module Financial.Taxes (deductLosses, deductLosses', scanDeductLosses) where
                 where
                     dl = deductibleLoss acc' acc orig
 
-    -- Same as deductLosses' but returns full track of loss deductions
-    scanDeductLosses nPeriodsToLookBack past = reverse $ scanr (deductLossesForPeriod nPeriodsToLookBack) [] $ reverse $ zip past past
-
     -- IMPORTANT: Deduction policy (2).
     deductibleLoss :: Currency -> Currency -> Currency -> Currency
     deductibleLoss currentProfit accumulatedLoss origLoss
         | currentProfit > 0 && accumulatedLoss < 0 = - minimum [currentProfit, - origLoss / 2, - accumulatedLoss]
         | otherwise = 0
 
+	-------------------
+	---- Debugging ----
+
+    -- Same as deductLosses' but returns full track of loss deductions
+    scanDeductLosses nPeriodsToLookBack past = reverse $ scanr (deductLossesForPeriod nPeriodsToLookBack) [] $ reverse $ zip past past
         
--- TODO: Remove dist/ from git and ignore it.

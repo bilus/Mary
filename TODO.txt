@@ -1,15 +1,17 @@
 -- TODO: Remove dist/ from git and ignore it.
+-- TODO: Ignore www/log, www/tmp
+-- TODO: Remove Gemfile.lock from git
 
-- Story #0: A hello world cramp project on the site with tests working.
++ Story #0: A hello world cramp project on the site with tests working.
 	+ SSH account.
 	+ Git.
-	- Git project on Github. MB
-	- Hello world cramp project. KB
-	- Cucumber spec: when user goes to the home page, he sees "Hello, world". MB
-	- Rspec spec. MB
-	- Make them pass. MB
-	- COMMIT MB
-Time: 1d
+	+ Git project on Github. MB
+	+ Hello world cramp project. KB
+	COMMIT
+	+ Cucumber spec: when user goes to the home page, he sees "Hello, world". MB
+	+ Rspec spec. MB
+	+ Make them pass. MB
+	+ COMMIT MB
 
 - Story #1: one user at a time can download an HTML report with the project name.
 	- Cucumber spec: when user submits the report form, he can download the report that includes the submitted project name. MB

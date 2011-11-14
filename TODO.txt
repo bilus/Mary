@@ -14,10 +14,15 @@
 	+ COMMIT MB
 
 - Story #1: one user at a time can download an HTML report with the project name.
-	- Cucumber spec: when user submits the report form, he can download the report that includes the submitted project name. MB
+	+ Failing cucumber spec: when user submits the report form, he can download the report that includes the submitted project name. MB
 	- Rspec-first:
 		- GET /report_form.html - report request form. MB
+			+ Route works.
+			+ Display the form.
+			+ Upon submit, JS should POST the project name and redirect to the returned URL.
 		- POST /create_report - responds with OK. KB
+			+ Should initialize project.
+			- URL should point to ReportPageAction.
 		- GET /report.html - report results. KB
 
 - Story: user can enter income and cost and see the cash flow (before tax).

@@ -1,0 +1,27 @@
+%html
+	%head
+		%script{:type => "text/javascript", :src => "/javascripts/jquery-1.6.2.min.js"}
+		:javascript
+			function onGenerateClicked() {
+				var projectName = $("input#project_name").val();
+				generateReport(projectName);
+			};
+			function generateReport(projectName) {
+				$.post("/report", {
+					project_name: projectName
+				}, 
+				function(data) {
+					var response = $.parseJSON(data);
+					window.location = "/report.html?id=" + response.access_token;
+				});
+				
+			};
+			$(document).ready(function() {
+				$("#generate").click(function() {
+					onGenerateClicked();
+				});
+			});
+
+	%body
+		%input#project_name
+		%button#generate

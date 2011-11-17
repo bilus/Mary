@@ -237,3 +237,152 @@ Rack::Reloader: reloaded `/Users/martinb/dev/mary/www/lib/project.rb'
 127.0.0.1 - - [17/Nov/2011 19:26:24] "GET /favicon.ico HTTP/1.1" 404 30 0.0091
 127.0.0.1 - - [17/Nov/2011 19:26:25] "GET ?id=0.392165148498655 HTTP/1.1" 200 - 0.0108
 >> Exiting!
+>> Writing PID to tmp/pids/thin.3000.pid
+>> Using rack adapter
+>> Thin web server (v1.3.1 codename Triple Espresso)
+>> Maximum connections set to 1024
+>> Listening on 0.0.0.0:3000, CTRL+C to stop
+127.0.0.1 - - [17/Nov/2011 19:51:07] "GET  HTTP/1.1" 200 - 0.0509
+127.0.0.1 - - [17/Nov/2011 19:51:07] "GET /favicon.ico HTTP/1.1" 404 30 0.0352
+127.0.0.1 - - [17/Nov/2011 19:51:08] "GET /favicon.ico HTTP/1.1" 404 30 0.0096
+>> Exiting!
+>> Writing PID to tmp/pids/thin.3000.pid
+>> Using rack adapter
+>> Thin web server (v1.3.1 codename Triple Espresso)
+>> Maximum connections set to 1024
+>> Listening on 0.0.0.0:3000, CTRL+C to stop
+127.0.0.1 - - [17/Nov/2011 19:53:48] "GET  HTTP/1.1" 200 - 0.0508
+127.0.0.1 - - [17/Nov/2011 19:53:48] "GET /favicon.ico HTTP/1.1" 404 30 0.0283
+127.0.0.1 - - [17/Nov/2011 19:53:50] "GET /favicon.ico HTTP/1.1" 404 30 0.0090
+>> Exiting!
+>> Writing PID to tmp/pids/thin.3000.pid
+>> Using rack adapter
+>> Thin web server (v1.3.1 codename Triple Espresso)
+>> Maximum connections set to 1024
+>> Listening on 0.0.0.0:3000, CTRL+C to stop
+127.0.0.1 - - [17/Nov/2011 19:55:32] "GET  HTTP/1.1" 200 - 0.0521
+127.0.0.1 - - [17/Nov/2011 19:55:32] "GET /favicon.ico HTTP/1.1" 404 30 0.0332
+127.0.0.1 - - [17/Nov/2011 19:55:33] "GET  HTTP/1.1" 200 - 0.0107
+127.0.0.1 - - [17/Nov/2011 19:55:33] "GET /javascripts/jquery-1.6.2.min.js HTTP/1.1" 200 91556 0.0184
+127.0.0.1 - - [17/Nov/2011 19:55:33] "GET /favicon.ico HTTP/1.1" 404 30 0.0318
+127.0.0.1 - - [17/Nov/2011 19:55:33] "POST  HTTP/1.1" 200 - 0.0116
+127.0.0.1 - - [17/Nov/2011 19:55:33] "GET ?id=0.9375707118003059 HTTP/1.1" 200 - 0.0114
+127.0.0.1 - - [17/Nov/2011 19:55:33] "GET /favicon.ico HTTP/1.1" 404 30 0.0120
+127.0.0.1 - - [17/Nov/2011 19:55:34] "GET /favicon.ico HTTP/1.1" 404 30 0.0104
+>> Exiting!
+>> Writing PID to tmp/pids/thin.3000.pid
+>> Using rack adapter
+>> Thin web server (v1.3.1 codename Triple Espresso)
+>> Maximum connections set to 1024
+>> Listening on 0.0.0.0:3000, CTRL+C to stop
+127.0.0.1 - - [17/Nov/2011 19:56:40] "GET  HTTP/1.1" 200 - 0.0580
+127.0.0.1 - - [17/Nov/2011 19:56:40] "GET /favicon.ico HTTP/1.1" 404 30 0.0206
+127.0.0.1 - - [17/Nov/2011 19:56:41] "GET  HTTP/1.1" 200 - 0.0117
+127.0.0.1 - - [17/Nov/2011 19:56:41] "GET /javascripts/jquery-1.6.2.min.js HTTP/1.1" 200 91556 0.0168
+127.0.0.1 - - [17/Nov/2011 19:56:41] "GET /favicon.ico HTTP/1.1" 404 30 0.0324
+127.0.0.1 - - [17/Nov/2011 19:56:41] "POST  HTTP/1.1" 200 - 0.0099
+127.0.0.1 - - [17/Nov/2011 19:56:41] "GET ?id=0.04170144461053482 HTTP/1.1" 200 - 0.0104
+127.0.0.1 - - [17/Nov/2011 19:56:41] "GET /favicon.ico HTTP/1.1" 404 30 0.0107
+127.0.0.1 - - [17/Nov/2011 19:56:43] "GET /favicon.ico HTTP/1.1" 404 30 0.0113
+127.0.0.1 - - [17/Nov/2011 19:56:43] "GET /favicon.ico HTTP/1.1" 404 30 0.0111
+127.0.0.1 - - [17/Nov/2011 19:56:43] "GET /favicon.ico HTTP/1.1" 404 30 0.0118
+127.0.0.1 - - [17/Nov/2011 19:56:50] "GET  HTTP/1.1" 200 - 0.0100
+127.0.0.1 - - [17/Nov/2011 19:56:50] "GET /javascripts/jquery-1.6.2.min.js HTTP/1.1" 200 91556 0.0263
+127.0.0.1 - - [17/Nov/2011 19:56:50] "GET /favicon.ico HTTP/1.1" 404 30 0.0095
+127.0.0.1 - - [17/Nov/2011 19:56:53] "GET /favicon.ico HTTP/1.1" 404 30 0.0080
+127.0.0.1 - - [17/Nov/2011 19:56:58] "GET  HTTP/1.1" 200 - 0.0119
+127.0.0.1 - - [17/Nov/2011 19:56:58] "GET /javascripts/jquery-1.6.2.min.js HTTP/1.1" 200 91556 0.0107
+127.0.0.1 - - [17/Nov/2011 19:56:58] "GET /favicon.ico HTTP/1.1" 404 30 0.0167
+127.0.0.1 - - [17/Nov/2011 19:57:01] "GET /favicon.ico HTTP/1.1" 404 30 0.0097
+>> Exiting!
+>> Writing PID to tmp/pids/thin.3000.pid
+>> Using rack adapter
+>> Thin web server (v1.3.1 codename Triple Espresso)
+>> Maximum connections set to 1024
+>> Listening on 0.0.0.0:3000, CTRL+C to stop
+127.0.0.1 - - [17/Nov/2011 19:58:56] "GET  HTTP/1.1" 200 - 0.0455
+127.0.0.1 - - [17/Nov/2011 19:58:56] "GET /favicon.ico HTTP/1.1" 404 30 0.0321
+127.0.0.1 - - [17/Nov/2011 19:58:56] "GET  HTTP/1.1" 200 - 0.0110
+127.0.0.1 - - [17/Nov/2011 19:58:57] "GET /javascripts/jquery-1.6.2.min.js HTTP/1.1" 200 91556 0.0145
+127.0.0.1 - - [17/Nov/2011 19:58:57] "GET /favicon.ico HTTP/1.1" 404 30 0.0293
+127.0.0.1 - - [17/Nov/2011 19:58:57] "POST  HTTP/1.1" 200 - 0.0098
+127.0.0.1 - - [17/Nov/2011 19:58:57] "GET ?id=0.5826564991343904 HTTP/1.1" 200 - 0.0093
+127.0.0.1 - - [17/Nov/2011 19:58:57] "GET /favicon.ico HTTP/1.1" 404 30 0.0102
+127.0.0.1 - - [17/Nov/2011 19:58:59] "GET /favicon.ico HTTP/1.1" 404 30 0.0104
+127.0.0.1 - - [17/Nov/2011 19:58:59] "GET /favicon.ico HTTP/1.1" 404 30 0.0106
+127.0.0.1 - - [17/Nov/2011 19:58:59] "GET /favicon.ico HTTP/1.1" 404 30 0.0112
+127.0.0.1 - - [17/Nov/2011 19:59:04] "GET  HTTP/1.1" 200 - 0.0112
+127.0.0.1 - - [17/Nov/2011 19:59:04] "GET /javascripts/jquery-1.6.2.min.js HTTP/1.1" 200 91556 0.0293
+127.0.0.1 - - [17/Nov/2011 19:59:04] "GET /favicon.ico HTTP/1.1" 404 30 0.0134
+127.0.0.1 - - [17/Nov/2011 19:59:07] "GET /favicon.ico HTTP/1.1" 404 30 0.0094
+127.0.0.1 - - [17/Nov/2011 19:59:12] "GET  HTTP/1.1" 200 - 0.0120
+127.0.0.1 - - [17/Nov/2011 19:59:12] "GET /javascripts/jquery-1.6.2.min.js HTTP/1.1" 200 91556 0.0104
+127.0.0.1 - - [17/Nov/2011 19:59:12] "GET /favicon.ico HTTP/1.1" 404 30 0.0177
+127.0.0.1 - - [17/Nov/2011 19:59:15] "GET /favicon.ico HTTP/1.1" 404 30 0.0087
+>> Exiting!
+>> Writing PID to tmp/pids/thin.3000.pid
+>> Using rack adapter
+>> Thin web server (v1.3.1 codename Triple Espresso)
+>> Maximum connections set to 1024
+>> Listening on 0.0.0.0:3000, CTRL+C to stop
+127.0.0.1 - - [17/Nov/2011 20:01:48] "GET  HTTP/1.1" 200 - 0.0512
+127.0.0.1 - - [17/Nov/2011 20:01:49] "GET /favicon.ico HTTP/1.1" 404 30 0.0330
+127.0.0.1 - - [17/Nov/2011 20:01:49] "GET  HTTP/1.1" 200 - 0.0098
+127.0.0.1 - - [17/Nov/2011 20:01:49] "GET /javascripts/jquery-1.6.2.min.js HTTP/1.1" 200 91556 0.0146
+127.0.0.1 - - [17/Nov/2011 20:01:49] "GET /favicon.ico HTTP/1.1" 404 30 0.0298
+127.0.0.1 - - [17/Nov/2011 20:01:49] "POST  HTTP/1.1" 200 - 0.0100
+127.0.0.1 - - [17/Nov/2011 20:01:49] "GET ?id=0.37612619850301 HTTP/1.1" 200 - 0.0099
+127.0.0.1 - - [17/Nov/2011 20:01:50] "GET /favicon.ico HTTP/1.1" 404 30 0.0114
+127.0.0.1 - - [17/Nov/2011 20:01:52] "GET /favicon.ico HTTP/1.1" 404 30 0.0103
+127.0.0.1 - - [17/Nov/2011 20:01:52] "GET /favicon.ico HTTP/1.1" 404 30 0.0100
+127.0.0.1 - - [17/Nov/2011 20:01:52] "GET /favicon.ico HTTP/1.1" 404 30 0.0099
+127.0.0.1 - - [17/Nov/2011 20:01:57] "GET  HTTP/1.1" 200 - 0.0135
+127.0.0.1 - - [17/Nov/2011 20:01:57] "GET /javascripts/jquery-1.6.2.min.js HTTP/1.1" 200 91556 0.0202
+127.0.0.1 - - [17/Nov/2011 20:01:57] "GET /favicon.ico HTTP/1.1" 404 30 0.0197
+127.0.0.1 - - [17/Nov/2011 20:02:00] "GET /favicon.ico HTTP/1.1" 404 30 0.0094
+127.0.0.1 - - [17/Nov/2011 20:02:04] "GET  HTTP/1.1" 200 - 0.0129
+127.0.0.1 - - [17/Nov/2011 20:02:04] "GET /javascripts/jquery-1.6.2.min.js HTTP/1.1" 200 91556 0.0118
+127.0.0.1 - - [17/Nov/2011 20:02:04] "GET /favicon.ico HTTP/1.1" 404 30 0.0172
+127.0.0.1 - - [17/Nov/2011 20:02:05] "GET /favicon.ico HTTP/1.1" 404 30 0.0087
+>> Exiting!
+>> Writing PID to tmp/pids/thin.3000.pid
+>> Using rack adapter
+>> Thin web server (v1.3.1 codename Triple Espresso)
+>> Maximum connections set to 1024
+>> Listening on 0.0.0.0:3000, CTRL+C to stop
+127.0.0.1 - - [17/Nov/2011 20:03:21] "GET  HTTP/1.1" 200 - 0.0612
+127.0.0.1 - - [17/Nov/2011 20:03:21] "GET /favicon.ico HTTP/1.1" 404 30 0.0202
+127.0.0.1 - - [17/Nov/2011 20:03:22] "GET  HTTP/1.1" 200 - 0.0193
+127.0.0.1 - - [17/Nov/2011 20:03:22] "GET /javascripts/jquery-1.6.2.min.js HTTP/1.1" 200 91556 0.0166
+127.0.0.1 - - [17/Nov/2011 20:03:22] "GET /favicon.ico HTTP/1.1" 404 30 0.0373
+127.0.0.1 - - [17/Nov/2011 20:03:22] "POST  HTTP/1.1" 200 - 0.0115
+127.0.0.1 - - [17/Nov/2011 20:03:22] "GET ?id=0.19632795108584378 HTTP/1.1" 200 - 0.0111
+127.0.0.1 - - [17/Nov/2011 20:03:22] "GET /favicon.ico HTTP/1.1" 404 30 0.0150
+127.0.0.1 - - [17/Nov/2011 20:03:24] "GET /favicon.ico HTTP/1.1" 404 30 0.0114
+127.0.0.1 - - [17/Nov/2011 20:03:24] "GET /favicon.ico HTTP/1.1" 404 30 0.0112
+127.0.0.1 - - [17/Nov/2011 20:03:24] "GET /favicon.ico HTTP/1.1" 404 30 0.0105
+127.0.0.1 - - [17/Nov/2011 20:03:29] "GET  HTTP/1.1" 200 - 0.0102
+127.0.0.1 - - [17/Nov/2011 20:03:29] "GET /javascripts/jquery-1.6.2.min.js HTTP/1.1" 200 91556 0.0281
+127.0.0.1 - - [17/Nov/2011 20:03:29] "GET /favicon.ico HTTP/1.1" 404 30 0.0117
+127.0.0.1 - - [17/Nov/2011 20:03:32] "GET /favicon.ico HTTP/1.1" 404 30 0.0109
+127.0.0.1 - - [17/Nov/2011 20:03:36] "GET  HTTP/1.1" 200 - 0.0097
+127.0.0.1 - - [17/Nov/2011 20:03:36] "GET /javascripts/jquery-1.6.2.min.js HTTP/1.1" 200 91556 0.0103
+127.0.0.1 - - [17/Nov/2011 20:03:36] "GET /favicon.ico HTTP/1.1" 404 30 0.0153
+127.0.0.1 - - [17/Nov/2011 20:03:37] "POST  HTTP/1.1" 200 - 0.0098
+127.0.0.1 - - [17/Nov/2011 20:03:37] "GET ?id=0.6148461579372804 HTTP/1.1" 200 - 0.0090
+127.0.0.1 - - [17/Nov/2011 20:03:37] "POST  HTTP/1.1" 200 - 0.0099
+127.0.0.1 - - [17/Nov/2011 20:03:37] "GET ?id=0.573672326304022 HTTP/1.1" 200 - 0.0097
+127.0.0.1 - - [17/Nov/2011 20:03:37] "GET /favicon.ico HTTP/1.1" 404 30 0.0354
+127.0.0.1 - - [17/Nov/2011 20:03:38] "GET /favicon.ico HTTP/1.1" 404 30 0.0090
+>> Exiting!
+>> Writing PID to tmp/pids/thin.3000.pid
+>> Thin web server (v1.3.1 codename Triple Espresso)
+>> Maximum connections set to 1024
+>> Listening on 0.0.0.0:3000, CTRL+C to stop
+127.0.0.1 - - [17/Nov/2011 20:06:30] "GET  HTTP/1.1" 200 - 0.0462
+127.0.0.1 - - [17/Nov/2011 20:06:51] "GET  HTTP/1.1" 200 - 0.0100
+127.0.0.1 - - [17/Nov/2011 20:06:57] "POST  HTTP/1.1" 200 - 0.0105
+127.0.0.1 - - [17/Nov/2011 20:06:57] "GET ?id=0.31800814790061616 HTTP/1.1" 200 - 0.0225
+127.0.0.1 - - [17/Nov/2011 20:07:01] "POST  HTTP/1.1" 200 - 0.0095
+127.0.0.1 - - [17/Nov/2011 20:07:01] "GET ?id=0.31403344122550525 HTTP/1.1" 200 - 0.0082
+127.0.0.1 - - [17/Nov/2011 20:07:40] "GET ?id=0.31800814790061616 HTTP/1.1" 200 - 0.0095

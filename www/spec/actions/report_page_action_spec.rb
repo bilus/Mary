@@ -13,5 +13,9 @@ describe "Page that shows an HTML report", :cramp => true do
       Project.should_receive(:name).and_return("EW Lubrza")
       get("/report.html").should respond_with :body => /.*EW Lubrza.*/
     end
+    it "should use the access token to get project name" do
+      Project.should_receive(:name).with("1234").and_return("EW Lubrza")
+      get("/report.html?id=1234").should respond_with :body => /.*EW Lubrza.*/
+    end
   end
 end

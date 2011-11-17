@@ -12,8 +12,16 @@ describe Project do
     end
     it "should return an access token that's difficult to crack (md5)"
   end
-  it "should return its name" do
-    Project.initialize!("ABC")
-    Project.name.should == "ABC"
+  context "name based on access tokens" do
+    it "should return the name of a project" do
+      token = Project.initialize!("ABC")
+      Project.name(token).should == "ABC"
+    end
+    it "should return names of multiple projects" do
+      token1 = Project.initialize!("ABC")
+      token2 = Project.initialize!("XYZ")
+      Project.name(token1).should == "ABC"
+      Project.name(token2).should == "XYZ"
+    end
   end
 end

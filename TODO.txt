@@ -13,17 +13,24 @@
 	+ Make them pass. MB
 	+ COMMIT MB
 
-- Story #1: one user at a time can download an HTML report with the project name.
++ Story 1: one user at a time can download an HTML report with the project name.
 	+ Failing cucumber spec: when user submits the report form, he can download the report that includes the submitted project name. MB
-	- Rspec-first:
-		- GET /report_form.html - report request form. MB
+	+ Rspec-first:
+		+ GET /report_form.html - report request form. MB
 			+ Route works.
 			+ Display the form.
 			+ Upon submit, JS should POST the project name and redirect to the returned URL.
-		- POST /create_report - responds with OK. KB
+		+ POST /report - responds with OK. KB
 			+ Should initialize project.
-			- URL should point to ReportPageAction.
-		- GET /report.html - report results. KB
+			+ Project.initialize!
+		  + GET /report.html?id=<access_token> - report results. KB
+	    + Update JS api.
++ Multiple users can create reports at the same time.
++ Story 2: user should not be able to see another user's report.
+  + Cucumber test.
+  + ReportPageAction should use access token.
+  + Project should return the correct project name based on its access token.
+- Story 3: user can enter construction cost and see it in the results.
 
 - Story: user can enter income and cost and see the cash flow (before tax).
 

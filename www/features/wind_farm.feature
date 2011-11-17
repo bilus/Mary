@@ -16,3 +16,12 @@ Feature: Wind farm project estimation
 	  And Tim generates a profitability report
 	  Then Tim's report should include "Lubrza"	  
 	  And Joe's report should include "Wilamowa"
+
+  @story2
+  Scenario: Story #2: investor should not be able to see another investor's report
+    When Joe creates a new project "Wilamowa"
+    And Tim creates a new project "Lubrza"
+    And Joe generates a profitability report
+    And Tim generates a profitability report
+    When Joe refreshes his report
+    Then Joe's report should include "Wilamowa"	  
